@@ -24,6 +24,11 @@ class Count extends Component
         }
     }
 
+    public function sendName()
+    {
+        $this->dispatch(event: 'changeName', name: $this->name)->to(Todo::class);
+    }
+
     public function render()
     {
         return view('livewire.count');
