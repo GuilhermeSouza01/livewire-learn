@@ -31,6 +31,7 @@
             </flux:sidebar.nav>
 
             <x-desktop-user-menu class="hidden lg:block" :name="auth()->user()->name" />
+            <img src="{{asset('storage/' . auth()->user()->avatar)}}" alt="User Avatar" class="rounded-full w-10 h-10">
         </flux:sidebar>
 
         <!-- Mobile User Menu -->
