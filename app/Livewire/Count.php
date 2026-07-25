@@ -10,12 +10,12 @@ class Count extends Component
 
     public ?string $name = 'Guilherme';
 
-    public function sum()
+    public function sum(): void
     {
         $this->total = $this->total + 1;
     }
 
-    public function toggleCaseName(string $type)
+    public function toggleCaseName(string $type): void
     {
         if ($type == 'LOWER') {
             $this->name = str($this->name)->lower()->toString();
@@ -24,12 +24,12 @@ class Count extends Component
         }
     }
 
-    public function sendName()
+    public function sendName(): void
     {
         $this->dispatch(event: 'changeName', name: $this->name)->to(Todo::class);
     }
 
-    public function render()
+    public function render(): \Illuminate\Contracts\View\View
     {
         return view('livewire.count');
     }

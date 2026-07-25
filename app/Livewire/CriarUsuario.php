@@ -11,11 +11,11 @@ class CriarUsuario extends Component
     public ?string $name = null;
     #[Validate('required|email|max:255')]
     public ?string $email = null;
-    public function render()
+    public function render(): \Illuminate\Contracts\View\View
     {
         return view('livewire.criar-usuario');
     }
-    public function save()
+    public function save(): void
     {
         $this->validate();
         $name = $this->name;

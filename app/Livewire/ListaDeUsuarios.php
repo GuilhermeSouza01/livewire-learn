@@ -9,13 +9,12 @@ use Livewire\Component;
 class ListaDeUsuarios extends Component
 {
     #[On('user-updated')]
-    public function refreshUsersList(){
+    public function refreshUsersList(): void {}
 
-    }
-    public function render()
+    public function render(): \Illuminate\Contracts\View\View
     {
         return view('livewire.lista-de-usuarios', [
-            'users' => User::all()
+            'users' => User::all(),
         ]);
     }
 }

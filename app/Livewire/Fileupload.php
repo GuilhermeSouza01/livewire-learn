@@ -2,23 +2,28 @@
 
 namespace App\Livewire;
 
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
 class Fileupload extends Component
 {
     use WithFileUploads;
-    public $avatar;
-    public function render()
+    public ?TemporaryUploadedFile $avatar = null;
+    public function render(): \Illuminate\Contracts\View\View
     {
         return view('livewire.fileupload');
     }
 
-    public function save()
+    public function save(): void
     {
         $this->validate([
             'avatar' => 'required|image|max:2048',
         ]);
+
+        if (! $this->avatar instanceof TemporaryUploadedFile) {
+            return;
+        }
 
         $path = $this->avatar->store('', 'public');
 
